@@ -1,8 +1,23 @@
 ```css
 /* =========================================================
-   CORDIO 2 — PERFORMANCE SOURCE
-   Instagram-inspired styling
+   CORDIO 2
+   Instagram DM — Lightweight Edition
    ========================================================= */
+
+/*
+   DESIGN RULE:
+   Discord controls layout.
+   Cordio controls appearance.
+
+   This file intentionally does NOT:
+   - change message widths
+   - change message margins
+   - change avatar dimensions
+   - change profile/popout structure
+   - transform Discord containers
+   - force viewport sizing
+   - use global backdrop-filter
+*/
 
 
 /* =========================================================
@@ -26,9 +41,9 @@
         linear-gradient(
             135deg,
             #405de6 0%,
-            #833ab4 32%,
-            #e1306c 65%,
-            #f77737 86%,
+            #833ab4 30%,
+            #e1306c 62%,
+            #f77737 85%,
             #fcaf45 100%
         );
 
@@ -36,21 +51,20 @@
         linear-gradient(
             135deg,
             #833ab4 0%,
-            #c13584 42%,
-            #e1306c 76%,
+            #c13584 40%,
+            #e1306c 72%,
             #f77737 100%
         );
 }
 
 
 /* =========================================================
-   BASIC GLOBAL STYLING
+   FONT
    ========================================================= */
 
 /*
-   Only apply the font to text-bearing Discord elements.
-   Do NOT use a global * selector — it causes unnecessary
-   style recalculation and can interfere with Discord UI.
+   Only text/input controls.
+   Avoiding * prevents unnecessary style recalculation.
 */
 
 body,
@@ -58,24 +72,25 @@ button,
 input,
 textarea,
 [role="button"] {
-    font-family: var(--cordio-font) !important;
+    font-family:
+        var(--cordio-font) !important;
 }
 
 
 /* =========================================================
-   APP BACKGROUND
+   APPLICATION BACKGROUND
    ========================================================= */
 
 .appMount__51fd7 {
     background:
-        var(--app-bg) center / cover no-repeat fixed !important;
+        var(--app-bg) center / cover no-repeat !important;
 }
 
 
 /*
-   Keep Discord's normal responsive sizing.
-   No zoom, transforms, forced widths, or viewport-based
-   message sizes.
+   No transforms.
+   No forced width/height.
+   No viewport calculations.
 */
 
 .layers__160d8 {
@@ -98,12 +113,21 @@ textarea,
     background:
         var(--sidebar-color) !important;
 
-    border-right:
-        1px solid rgba(255,255,255,0.035) !important;
+    border:
+        none !important;
 }
 
 .sidebar__5e434:after {
     display:
+        none !important;
+}
+
+.sidebar__5e434 .container__2637a,
+.sidebarList__5e434 {
+    background:
+        transparent !important;
+
+    border:
         none !important;
 }
 
@@ -116,14 +140,14 @@ textarea,
 .header_f37cb1 {
     background:
         transparent !important;
+
+    border:
+        none !important;
 }
 
 .link__2ea32 {
     border-radius:
         12px !important;
-
-    transition:
-        background 120ms ease !important;
 }
 
 .link__2ea32:hover {
@@ -142,15 +166,17 @@ textarea,
         transparent !important;
 }
 
+
+/*
+   Native Discord channel dimensions remain untouched.
+*/
+
 .channel__972a0 {
     margin:
         2px 7px !important;
 
     border-radius:
         13px !important;
-
-    transition:
-        background 120ms ease !important;
 }
 
 .channel__972a0:hover {
@@ -162,12 +188,12 @@ textarea,
     background:
         linear-gradient(
             90deg,
-            rgba(131,58,180,0.24),
+            rgba(131,58,180,0.22),
             rgba(225,48,108,0.10)
         ) !important;
 
     box-shadow:
-        inset 2px 0 rgba(225,48,108,0.75);
+        inset 2px 0 rgba(225,48,108,0.72);
 }
 
 
@@ -192,6 +218,22 @@ textarea,
 
     border-radius:
         17px !important;
+}
+
+
+/* =========================================================
+   USER PANEL
+   ========================================================= */
+
+.panels__5e434 {
+    background:
+        rgba(255,255,255,0.035) !important;
+
+    border:
+        1px solid rgba(255,255,255,0.035) !important;
+
+    border-radius:
+        16px !important;
 }
 
 
@@ -225,10 +267,15 @@ textarea,
 
 .themed__9293f {
     background:
-        rgba(8,8,12,0.22) !important;
+        rgba(7,7,11,0.25) !important;
 
     border-bottom:
         1px solid rgba(255,255,255,0.035) !important;
+}
+
+.title_f75fb0 {
+    font-weight:
+        600 !important;
 }
 
 
@@ -238,50 +285,102 @@ textarea,
 
 /*
    IMPORTANT:
-   We do NOT change message widths, margins, transforms,
-   display modes, or Discord's native message layout.
+
+   We do NOT modify:
+   - width
+   - max-width
+   - margin
+   - display
+   - position
+   - transform
+   - height
+
+   Discord therefore retains its native message geometry.
 */
-
-.wrapper_c19a55 {
-    background:
-        transparent !important;
-
-    border:
-        none !important;
-}
 
 
 /*
-   Small lightweight bubble around message content.
+   The contents element receives the visual bubble.
+
+   Because we aren't changing its display or dimensions,
+   Discord remains responsible for sizing it.
 */
 
 .contents_c19a55 {
     background:
-        var(--message-color) !important;
-
-    border-radius:
-        var(--message-radius) !important;
-
-    padding-top:
-        var(--message-padding-top) !important;
-
-    padding-bottom:
-        var(--message-padding-top) !important;
-
-    padding-left:
-        var(--message-padding-side) !important;
-
-    padding-right:
-        var(--message-padding-side) !important;
+        rgba(255,255,255,0.065) !important;
 
     border:
-        1px solid rgba(255,255,255,0.025) !important;
+        1px solid rgba(255,255,255,0.035) !important;
+
+    border-radius:
+        16px !important;
+
+    padding:
+        6px 11px !important;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.06) !important;
 }
+
+
+/* Subtle hover */
 
 .wrapper_c19a55:hover .contents_c19a55 {
     background:
-        var(--message-color-hover,
-        rgba(255,255,255,0.105)) !important;
+        rgba(255,255,255,0.085) !important;
+}
+
+
+/* =========================================================
+   YOUR MESSAGES
+   ========================================================= */
+
+/*
+   Requires Vencord's ThemeAttributes plugin.
+
+   ThemeAttributes exposes:
+       data-is-self="true"
+
+   This lets us target ONLY messages sent by you.
+*/
+
+
+[data-is-self="true"] .contents_c19a55 {
+    background:
+        var(--cordio-message-gradient) !important;
+
+    border:
+        none !important;
+
+    color:
+        #fff !important;
+
+    box-shadow:
+        0 3px 10px rgba(225,48,108,0.13) !important;
+}
+
+
+/*
+   Keep your own message text readable.
+*/
+
+[data-is-self="true"] .markup__75297 {
+    color:
+        #fff !important;
+}
+
+
+/*
+   Don't apply the gradient to attachments,
+   embeds, code blocks, etc.
+*/
+
+[data-is-self="true"] .embedFull__623de,
+[data-is-self="true"] .container__0f2e8,
+[data-is-self="true"] .markup__75297 code {
+    background:
+        initial !important;
 }
 
 
@@ -290,34 +389,21 @@ textarea,
    ========================================================= */
 
 .markup__75297 {
+    color:
+        rgba(255,255,255,0.94) !important;
+
     font-family:
         var(--cordio-font) !important;
-
-    font-size:
-        inherit !important;
-
-    line-height:
-        1.45 !important;
 }
 
-.username_c19a55 {
+.markup__75297 strong {
     font-weight:
         600 !important;
 }
 
-.timestamp_c19a55 {
-    opacity:
-        0.55 !important;
-}
-
-
-/* =========================================================
-   LINKS
-   ========================================================= */
-
 .markup__75297 a {
     color:
-        #bfc3ff !important;
+        #c8caff !important;
 
     text-decoration:
         none !important;
@@ -326,6 +412,46 @@ textarea,
 .markup__75297 a:hover {
     text-decoration:
         underline !important;
+}
+
+
+/* =========================================================
+   USERNAMES
+   ========================================================= */
+
+.username_c19a55 {
+    font-family:
+        var(--cordio-font) !important;
+
+    font-weight:
+        600 !important;
+}
+
+
+/* =========================================================
+   TIMESTAMPS
+   ========================================================= */
+
+.timestamp_c19a55 {
+    opacity:
+        0.48 !important;
+}
+
+
+/* =========================================================
+   AVATARS
+   ========================================================= */
+
+/*
+   Absolutely NO size, position, transform, or display
+   modifications.
+
+   Discord retains native avatar behavior.
+*/
+
+.avatar_c19a55 {
+    border-radius:
+        50% !important;
 }
 
 
@@ -343,7 +469,7 @@ textarea,
 
 .repliedMessage_c19a55:before {
     border-color:
-        rgba(225,48,108,0.70) !important;
+        rgba(225,48,108,0.65) !important;
 }
 
 
@@ -353,10 +479,10 @@ textarea,
 
 .wrapper_f61d60 {
     background:
-        rgba(131,58,180,0.22) !important;
+        rgba(131,58,180,0.20) !important;
 
     color:
-        #dfccff !important;
+        #dfd3ff !important;
 
     border-radius:
         6px !important;
@@ -375,20 +501,20 @@ textarea,
         1px solid rgba(255,255,255,0.035) !important;
 
     border-radius:
-        13px !important;
+        12px !important;
 }
 
 .reaction__23977:hover {
     background:
-        rgba(255,255,255,0.095) !important;
+        rgba(255,255,255,0.085) !important;
 }
 
 .reaction__23977.reactionMe__23977 {
     background:
-        rgba(225,48,108,0.20) !important;
+        rgba(225,48,108,0.18) !important;
 
     border-color:
-        rgba(225,48,108,0.25) !important;
+        rgba(225,48,108,0.24) !important;
 }
 
 
@@ -411,7 +537,7 @@ textarea,
         var(--textarea-radius) !important;
 
     box-shadow:
-        0 4px 15px rgba(0,0,0,0.12) !important;
+        0 4px 16px rgba(0,0,0,0.10) !important;
 }
 
 .channelTextArea__74017:focus-within,
@@ -434,17 +560,6 @@ textarea,
 
 
 /* =========================================================
-   INPUT PLACEHOLDER
-   ========================================================= */
-
-.channelTextArea__74017 .placeholder__1b31f,
-.wrapper__44df5 .placeholder__1b31f {
-    opacity:
-        0.55 !important;
-}
-
-
-/* =========================================================
    INPUT BUTTONS
    ========================================================= */
 
@@ -454,15 +569,9 @@ textarea,
         50% !important;
 }
 
-.attachButton__0923f:hover,
-.emojiButton__04eed:hover {
-    background:
-        rgba(255,255,255,0.065) !important;
-}
-
 
 /* =========================================================
-   NEW MESSAGE BAR
+   NEW MESSAGES
    ========================================================= */
 
 .newMessagesBar__0f481 {
@@ -476,7 +585,7 @@ textarea,
         13px !important;
 
     box-shadow:
-        0 3px 12px rgba(225,48,108,0.16) !important;
+        0 3px 12px rgba(225,48,108,0.14) !important;
 }
 
 
@@ -486,10 +595,10 @@ textarea,
 
 .jumpToPresentBar__0f481 {
     background:
-        rgba(15,12,20,0.70) !important;
+        rgba(12,10,16,0.70) !important;
 
     border:
-        1px solid rgba(255,255,255,0.04) !important;
+        1px solid rgba(255,255,255,0.045) !important;
 
     border-radius:
         13px !important;
@@ -525,13 +634,7 @@ textarea,
         1px solid rgba(255,255,255,0.035) !important;
 
     border-radius:
-        15px !important;
-}
-
-.container_e88f3f:hover,
-.container__0f2e8:hover {
-    background:
-        var(--card-color-hover) !important;
+        14px !important;
 }
 
 
@@ -552,40 +655,7 @@ textarea,
 
 .lookFilled__201d5.colorBrand__201d5:hover {
     filter:
-        brightness(1.06);
-}
-
-
-/* =========================================================
-   POPOUTS
-   ========================================================= */
-
-/*
-   Deliberately minimal.
-
-   Discord profile popouts, user profiles, emoji pickers,
-   menus, etc. are left to Discord's native rendering.
-
-   This prevents the broken profile/character appearance
-   caused by broad popout selectors.
-*/
-
-
-/* =========================================================
-   SEARCH
-   ========================================================= */
-
-.searchResultsWrap_a98f3b {
-    background:
-        rgba(8,8,12,0.45) !important;
-
-    border:
-        none !important;
-}
-
-.searchResult__80bf8 {
-    background:
-        transparent !important;
+        brightness(1.05);
 }
 
 
@@ -598,11 +668,14 @@ textarea,
 .members_c8ffbb {
     background:
         transparent !important;
+
+    border:
+        none !important;
 }
 
 .layout__91a9d {
     border-radius:
-        11px !important;
+        12px !important;
 }
 
 .layout__91a9d:hover {
@@ -630,12 +703,12 @@ textarea,
 
 .item__133bf:hover {
     background:
-        rgba(255,255,255,0.055) !important;
+        rgba(255,255,255,0.05) !important;
 }
 
 .item__133bf[aria-selected="true"] {
     background:
-        rgba(225,48,108,0.14) !important;
+        rgba(225,48,108,0.13) !important;
 }
 
 
@@ -666,47 +739,63 @@ textarea,
 
 ::-webkit-scrollbar-thumb:hover {
     background:
-        rgba(225,48,108,0.65) !important;
+        rgba(225,48,108,0.60) !important;
 }
 
 
 /* =========================================================
-   DISCORD NATIVE PROFILE / CHARACTER UI
+   BOT TAG
+   ========================================================= */
+
+.botTag__82f07.botTagRegular__82f07 {
+    background:
+        var(--cordio-gradient) !important;
+
+    color:
+        #fff !important;
+}
+
+
+/* =========================================================
+   PROFILE / POPOUT SAFETY
    ========================================================= */
 
 /*
-   Intentionally untouched.
+   NO PROFILE SELECTORS.
 
-   Do not add generic selectors for:
-   .userPopout
-   .profile
-   .avatar
-   .userProfile
-   [class*="profile"]
-   [class*="avatar"]
+   Discord owns:
+   - user profiles
+   - profile popouts
+   - avatars
+   - banners
+   - pronouns
+   - badges
+   - character appearance
+   - custom profile themes
 
-   Discord handles these natively.
+   This is intentional.
 */
 
 
 /* =========================================================
-   PERFORMANCE NOTES
+   PERFORMANCE
    ========================================================= */
 
 /*
-   No:
-   - global backdrop-filter
-   - global transforms
-   - forced message widths
-   - viewport-dependent message sizing
-   - global animations
-   - giant box shadows
-   - broad profile selectors
-   - global * selector
+   Deliberately removed:
+
+   backdrop-filter
+   transform
+   animation
+   global *
+   message max-width
+   message display overrides
+   message margin overrides
+   avatar transforms
+   avatar shadows
+   profile styling
+   popout styling
+   fixed font sizes
+   viewport sizing
 */
-
-
-/* =========================================================
-   END CORDIO 2 PERFORMANCE SOURCE
-   ========================================================= */
 ```
