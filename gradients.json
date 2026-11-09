@@ -1,0 +1,30 @@
+{
+    "839405": {
+        "Enabled": true,
+        "Colors": [
+            "#FF0000",
+            "#FF0054",
+            "#8000FF"
+        ],
+        "Rotation": 0
+    },
+    "4992470579": {
+        "Enabled": true,
+        "Colors": [
+            "#00FFFF",
+            "#0000FF"
+        ],
+        "Rotation": 90
+    },
+    "117991660": {
+        "Enabled": true,
+        "Colors": [
+            "#FFD700",
+            "#FF8C00"
+        ],
+        "Rotation": 0
+    },
+    "456287539": {
+        "Enabled": false
+    }
+}
