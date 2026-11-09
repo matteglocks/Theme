@@ -2,29 +2,19 @@
     "839405": {
         "Enabled": true,
         "Colors": [
-            "#090909",
-            "#808080",
-            "#FFFFFF"
+            "#000000",
+            "#FFFFFF",
+            "#000000"
         ],
         "Rotation": 0
     },
     "4992470579": {
         "Enabled": true,
         "Colors": [
-            "#00FFFF",
-            "#0000FF"
-        ],
-        "Rotation": 90
-    },
-    "117991660": {
-        "Enabled": true,
-        "Colors": [
-            "#FFD700",
-            "#FF8C00"
+            "#000000",
+            "#FFFFFF",
+            "#000000"
         ],
         "Rotation": 0
-    },
-    "456287539": {
-        "Enabled": false
     }
 }
