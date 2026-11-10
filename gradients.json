@@ -73,5 +73,15 @@
             "#A9A9A9"
         ],
         "Rotation": 0
+    },
+    "24735902": {
+        "Enabled": true,
+        "Colors": [
+            "#EF745C",
+            "#EEB86D",
+            "#F4D444",
+            "#E65763"
+        ],
+        "Rotation": 0
     }
 }
